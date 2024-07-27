@@ -10,75 +10,78 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <title>calculator</title>
+    <title>Calculator</title>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      .main {
+        width: 100%;
+        max-width: 40%;
+        margin: auto;
+      }
+      #calculator {
+        margin: 20px 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+      }
+      #calculator.show {
+        opacity: 1;
+        visibility: visible;
+      }
+      #calculator.hide {
+        opacity: 0;
+        visibility: hidden;
+      }
+      #calculator div {
+        margin-bottom: 10px;
+      }
+      #calculator label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      #calculator input {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+      }
+      #calculator button {
+        padding: 10px 15px;
+        background-color: #daa520;
+        color: black;
+        border: none;
+        cursor: pointer;
+        border-radius: 20px;
+        font-weight: bold;
+      }
+      #calculator button:hover {
+        background-color: #daa520;
+      }
+      .calculate-btn {
+        padding: 10px 15px;
+        background-color: #daa520;
+        color: black;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      .calculator-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    </style>
   </head>
-  <style>
-    body {
-      display: flex;
-      /* flex-direction: column; */
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-    .main {
-      width: 100%;
-      max-width: 40%;
-      margin: auto;
-    }
-    #calculator {
-      margin: 20px 0;
-      display: none;
-    }
-
-    #calculator div {
-      margin-bottom: 10px;
-    }
-
-    #calculator label {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    #calculator input {
-      width: 100%;
-      padding: 8px;
-      box-sizing: border-box;
-    }
-
-    #calculator button {
-      padding: 10px 15px;
-      background-color: #daa520;
-      color: black;
-      border: none;
-      cursor: pointer;
-      border-radius: 20px;
-      font-weight: bold;
-    }
-
-    #calculator button:hover {
-      background-color: #daa520;
-    }
-
-    .calculate-btn {
-      padding: 10px 15px;
-      background-color: #daa520;
-      color: black;
-      border-radius: 20px;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .calculator-heading {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-  </style>
   <body>
     <div class="main">
       <button class="calculate-btn">Calculate your Package Cost</button>
 
-      <div id="calculator">
+      <div id="calculator" class="hide">
         <div class="calculator-heading">
           <h2>Ingredient Cost Calculator</h2>
           <div class="close-calculator">
@@ -127,11 +130,13 @@
       const calculator = document.querySelector("#calculator");
 
       calculateBtn.addEventListener("click", () => {
-        calculator.style.display = "block";
+        calculator.classList.remove("hide");
+        calculator.classList.add("show");
       });
 
       closeCalculator.addEventListener("click", () => {
-        calculator.style.display = "none";
+        calculator.classList.remove("show");
+        calculator.classList.add("hide");
       });
     </script>
   </body>
